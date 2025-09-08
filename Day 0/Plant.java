@@ -33,11 +33,40 @@ public class Plant {
         
     }
 
+    public void grow(int estimatedHeight) {
+        
+        if (estimatedHeight != 10) {
+            estimatedHeight = estimatedHeight + 1;
+        }
+        
+
+    }
+
 
     // watered
     // dies
     // blossoms
     // flowers
 
-    
+
+    public boolean equals(Plant otherPlant) {
+        if (
+        this.estimatedHeight == otherPlant.estimatedHeight &&
+        this.estimatedWidth == otherPlant.estimatedWidth &&
+        this.firstLetter == otherPlant.firstLetter &&
+        this.theLeaves == otherPlant.theLeaves &&
+        this.ifGreen == otherPlant.ifGreen
+        ) {
+            return true;
+        }
+        return false;
+    }
+
+    public String toString() {
+        return "This plant has " + theLeaves
+        + " number of leaves and is " + estimatedHeight
+        + " feet tall and is " + estimatedWidth
+        + "feet wide and its first letter is " + firstLetter
+        + ". Is it green? " + ifGreen;
+    }
     }
