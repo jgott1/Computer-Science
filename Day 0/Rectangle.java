@@ -1,18 +1,21 @@
 public class Rectangle {
     private int length;
     private int width;
+    private int area;
+    private int perimeter;
+    private double diagonal;
 
     public Rectangle() {
         length = 5;
         width = 8;
     }
 
-    public Rectangle (int desiredLength, int desiredWidth) {
+    public Rectangle(int desiredLength, int desiredWidth) {
         length = desiredLength;
         width = desiredWidth;
-        }
+    }
     
-    public Rectangle (int squaredSideLength) {
+    public Rectangle(int squaredSideLength) {
         length = squaredSideLength;
         width = squaredSideLength;
     }
@@ -37,22 +40,29 @@ public class Rectangle {
         width = newWidth;
     }
 
-    // methods
-
-    public int calculateArea() {
-        int area = length * width;
-        return area;
+    public int getArea() {
+        area = length * width;
+        return this.area;
     }
 
-    public int calculatePerimiter() {
-        int perimiter = 2 * length + 2 * width;
-        return perimiter;
+    public int getPerimeter() {
+        perimeter = length + length + width + width;
+        return this.perimeter;
     }
 
-    public double calculateDiagonal() {
-        double diagonal = Math.sqrt(length^2 + width^2);
-        return diagonal;
+    public double getDiagonal() {
+        diagonal = Math.sqrt(length * length + width * width);
+        return this.diagonal;
     }
 
-
+    public boolean equals(Rectangle otherRectangle) {
+        if (
+            this.width == otherRectangle.width
+                &&
+                this.length == otherRectangle.length
+            ) {
+            return true;
+        }
+        return false;
+    }
 }

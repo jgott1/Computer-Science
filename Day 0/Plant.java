@@ -6,6 +6,15 @@ public class Plant {
     private char firstLetter; // = 'P';
     boolean ifGreen; // = true;
 
+
+    public double getEstimatedHeight() {
+        return this.estimatedHeight;
+    }
+
+    public void setEstimatedHeight(double newEstimatedHeight) {
+        this.estimatedHeight = newEstimatedHeight;
+    }
+
     public Plant() {
         theLeaves = "contains leaves";
         estimatedHeight = 3.1;
