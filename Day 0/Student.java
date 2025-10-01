@@ -3,13 +3,23 @@ public class Student {
     private int grade;
     private String id;
 
+    public Student(String name, int grade) {
+        this.name = name;
+        this.grade = grade;
+        this.id = generateId();
+    }
+
+    public Student(String name) {
+        this.name = name;
+        this.grade = 10;
+        this.id = generateId();
+    }
+
     public int getGrade() {
-        
         return grade;
     }
 
     public String getId() {
-        this.id = getId();
         return id;
     }
 
@@ -39,17 +49,6 @@ public class Student {
         y = getRandom(0, 10); 
         id = id + y;
         return id;
-    }
-
-    public Student(String name, int grade) {
-        this.name = name;
-        this.grade = grade;
-
-    }
-
-    public Student(String name) {
-        this.name = name;
-        this.grade = 10;
     }
 
     public void setGrade(int generateGrade) {
