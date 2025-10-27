@@ -1,9 +1,9 @@
 public class Inventory {
     private String itemName;
     private int quantity;
-    private int price;
+    private double price;
 
-    public Inventory(String itemName, int quantity, int price) {
+    public Inventory(String itemName, int quantity, double price) {
         this.itemName = itemName;
         this.quantity = quantity;
         this.price = price;
@@ -17,7 +17,7 @@ public class Inventory {
         return quantity;
     }
 
-    public int getPrice() {
+    public double getPrice() {
         return price;
     }
 
@@ -25,7 +25,7 @@ public class Inventory {
         this.itemName = itemName;
     }
 
-    public void setPrice(int price) {
+    public void setPrice(double price) {
         this.price = price;
     }
 
@@ -48,7 +48,7 @@ public class Inventory {
     }
 
     public void raisePrice(double percentage) {
-        double price = this.price / (percentage / 100);
+        this.price = price / (percentage / 100);
     }
 
 
