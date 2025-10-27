@@ -1,58 +1,87 @@
 public class Cat {
-    //1. Made 'public' lowercase.
-    //2. Changed Cats to Cat.
 	private String name;
-	private String breed;
+	private String ownerName;
+	private int moodLevel;
+	private int catId;
+	private char catChar;
 	private boolean isHungry;
-	private int livesRemaining;
-	
-	// 2-Parameter Constructor
-	public Cat(String name, String breed) {
-        //3. Added String breed.
+
+	public Cat(String name, String ownerName, int moodLevel, String catId) {
 		this.name = name;
-        //4. Added 'this.'
-		this.breed = breed;
-        //5. Added 'this.'
+		this.ownerName = ownerName;
+		this.moodLevel = validateMoodLevel();
+		this.catId = validateCatId();
+		this.catChar = generateCatChar();
 		this.isHungry = true;
-        //6. Changed yes to true.
-		livesRemaining = 9;
+	}
+
+	public Cat() {
+		this.name = "Jojo";
+		this.ownerName = "Rose";
+		this.moodLevel = 5;
+		this.catId = 1234;
+		this.catChar = generateCatChar();
+		this.isHungry = true;
 	}
 
 	public String getName() {
-        //7. Changed void to String.
 		return name;
+	}
+
+	public String getOwnerName() {
+		return ownerName;
+	}
+
+	public int getMoodLevel() {
+		return moodLevel;
+	}
+
+	public int getCatId() {
+		return catId;
+	}
+
+	public char getCatChar() {
+		return catChar;
+	}
+
+	public boolean isHungry() {
+		return isHungry;
 	}
 
 	public void setName(String name) {
 		this.name = name;
 	}
 
-	public boolean getIsHungry() {
-        //8. Capitalized I and H.
-        //9. Changed void to Boolean.
-        //10. Added a space in between ) and {.
-		return isHungry;
+	public void setOwnerName(String ownerName) {
+		this.ownerName = ownerName;
 	}
 
-	public void feed() {
-        //11. Changed boolean to void.
-		this.isHungry = false;
+	public void validateMoodLevel(int moodLevel) {
+		if (moodLevel < 0) {
+			moodLevel = 0;
+			this.moodLevel = moodLevel;
+		}
+		if (moodLevel > 10) {
+			moodLevel = 10;
+			this.moodLevel = moodLevel;
+		} else {
+			this.moodLevel = moodLevel;
+		}
 	}
 
-	public boolean equals(Cat otherCat) {
-        //12. Added Cat to other
-		if (this.name == otherCat.name && this.breed.equals(otherCat.breed)
-			&& this.livesRemaining == otherCat.livesRemaining) {
-                return true;
-            } else {
-                return false;
-            }
-        //13. Added an equal sign after livesRemaining.
-        //14. Changed it to an if else (instead of it returning a String).
+	public void validateCatId(int catId) {
+		
+		//ValidateThis using the random thing in perfectUtils
 	}
 
-	public String toString() {
-		return (name + " is of breed " + breed + " and has " + livesRemaining + " lives remaining.");
-        //15. Changed System.out.println to return.
+	public void setCatChar(char catChar) {
+		this.catChar = catChar;
 	}
+
+	public void setHungry(boolean isHungry) {
+		this.isHungry = isHungry;
+	}
+
+	
+
 }
