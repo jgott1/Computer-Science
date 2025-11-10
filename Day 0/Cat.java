@@ -2,16 +2,16 @@ public class Cat {
 	private String name;
 	private String ownerName;
 	private int moodLevel;
-	private int catId;
+	private String catId;
 	private char catChar;
 	private boolean isHungry;
 
 	public Cat(String name, String ownerName, int moodLevel, String catId) {
 		this.name = name;
 		this.ownerName = ownerName;
-		this.moodLevel = validateMoodLevel();
-		this.catId = validateCatId();
-		this.catChar = generateCatChar();
+		this.moodLevel = PurrfectUtils.validateMoodLevel(moodLevel);
+		this.catId = PurrfectUtils.validateCatId(catId);
+		this.catChar = PurrfectUtils.generateCatChar(catId);
 		this.isHungry = true;
 	}
 
@@ -19,8 +19,8 @@ public class Cat {
 		this.name = "Jojo";
 		this.ownerName = "Rose";
 		this.moodLevel = 5;
-		this.catId = 1234;
-		this.catChar = generateCatChar();
+		this.catId = "1234";
+		this.catChar = PurrfectUtils.generateCatChar(catId);
 		this.isHungry = true;
 	}
 
@@ -36,7 +36,7 @@ public class Cat {
 		return moodLevel;
 	}
 
-	public int getCatId() {
+	public String getCatId() {
 		return catId;
 	}
 
@@ -56,22 +56,13 @@ public class Cat {
 		this.ownerName = ownerName;
 	}
 
-	public void validateMoodLevel(int moodLevel) {
-		if (moodLevel < 0) {
-			moodLevel = 0;
-			this.moodLevel = moodLevel;
-		}
-		if (moodLevel > 10) {
-			moodLevel = 10;
-			this.moodLevel = moodLevel;
-		} else {
-			this.moodLevel = moodLevel;
-		}
+	public void setMoodLevel(int moodLevel) {
+		this.moodLevel = PurrfectUtils.validateMoodLevel(moodLevel);
 	}
 
-	public void validateCatId(int catId) {
-		
-		//ValidateThis using the random thing in perfectUtils
+	public void setCatId(String catId) {
+		this.catId = PurrfectUtils.validateCatId(catId);
+	
 	}
 
 	public void setCatChar(char catChar) {
@@ -80,6 +71,29 @@ public class Cat {
 
 	public void setHungry(boolean isHungry) {
 		this.isHungry = isHungry;
+	}
+
+	public String generateCatTag() {
+		return (catId + catChar);
+	}
+
+	public String toString() {
+		String lineOne = "== ABOUT " + getName() + " ==\n";
+		String lineTwo = getName() + " is a cat.\n";
+		String lineThree = "Their tag is " + generateCatTag() + ".\n";
+		String lineFour = PurrfectUtils.determineCatMood(this) + ".";
+		return (lineOne + lineTwo + lineThree + lineFour);
+	}
+
+	public boolean equals(Cat other) {
+		if (this.name.equals(other.name) && this.ownerName.equals(other.ownerName)
+			&& this.moodLevel == other.moodLevel
+			&& this.generateCatTag().equals(other.generateCatTag())
+			&& this.isHungry == other.isHungry){
+			return true;
+		} else {
+			return false;
+		}
 	}
 
 	
