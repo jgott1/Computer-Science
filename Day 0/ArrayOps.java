@@ -1,12 +1,12 @@
 public class ArrayOps {
-     /**
-     * Prints the contents of a string array, separating each element with a
-     * comma and enclosing the output in square brackets [].
-     *
-     * @param array
-     *              The String array to be printed.
-     * @return The constructed string representation of the array.
-     */
+    /**
+    * Prints the contents of a string array, separating each element with a
+    * comma and enclosing the output in square brackets [].
+    *
+    * @param array
+    *              The String array to be printed.
+    * @return The constructed string representation of the array.
+    */
     public static String printStringArray(String[] array) {
         String stringArray = "[";
         for (int i = 0; i < array.length; i++) {
@@ -30,7 +30,7 @@ public class ArrayOps {
      */
 
     public static String printIntegerArray(int[] array) {
-            String stringArray = "[";
+        String stringArray = "[";
         for (int i = 0; i < array.length; i++) {
             stringArray += (array[i]);
             if (i < array.length - 1) {
@@ -69,12 +69,15 @@ public class ArrayOps {
      * @return The longest String in the array.
      */
     public static String findLongestString(String[] array) {
+        if (array == null) {
+            return null;
+        }
         String longest = array[0];
-            for (int i = 1; i < array.length; i++) {
+        for (int i = 1; i < array.length; i++) {
             if (array[i].length() > longest.length()) {
                 longest = array[i];
             }
-            }
+        }
         return longest;
     }
 
@@ -121,7 +124,7 @@ public class ArrayOps {
         for (int i = 0; i < input.length(); i++) {
             char letter = input.charAt(i);
             if (letter >= 'a' && letter <= 'z') {
-                letter = (char)(letter - 'a' + 'A');
+                letter = (char) (letter - 'a' + 'A');
             }
             if (letter >= 'A' && letter <= 'Z') {
                 int index = letter - 'A';
@@ -188,7 +191,18 @@ public class ArrayOps {
      *         each String
      */
     public static String[] addNumToStringArray(String[] array) {
-        return new String[0];
+        if (array == null) {
+            return new String[0];
+        }
+        String[] result = new String[array.length];
+        for (int i = 0; i < array.length; i++) {
+            if (array[i] == null) {
+                result[i] = "null";
+            } else {
+                result[i] = "#" + i + " " + array[i];
+            }
+        }
+        return result;
     }
 
     /**
@@ -199,7 +213,14 @@ public class ArrayOps {
      * @return The reversed array
      */
     public static int[] reverseIntArray(int[] array) {
-        return new int[0];
+        if (array == null) {
+            return new int[0];
+        }
+        int[] reversed = new int[array.length];
+        for (int i = 0; i < array.length; i++) {
+            reversed[i] = array[array.length - 1 - i];
+        }
+        return reversed;
     }
 
 }
